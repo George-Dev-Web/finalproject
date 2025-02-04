@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Form</title>
+    <title>Request Form</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -33,13 +33,14 @@
         margin: auto;
       }
       label,
-      input {
+      input,
+      textarea {
         display: block;
         margin-bottom: 10px;
         width: 100%;
       }
       button {
-        background: #28a745;
+        background: #007bff;
         color: white;
         border: none;
         padding: 10px;
@@ -51,33 +52,29 @@
   <body>
     <nav>
       <ul>
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="order.html">Order</a></li>
         <li><a href="request.html">Request</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="../pages/about.html">Contact</a></li>
       </ul>
     </nav>
 
-    <h2>Place Your Order</h2>
-    <form id="orderForm">
-      <label for="item">Item Name:</label>
-      <input type="text" id="item" name="item" required />
+    <h2>Submit Your Request</h2>
+    <form id="requestForm">
+      <label for="request">Request Details:</label>
+      <textarea id="request" name="request" rows="4" required></textarea>
 
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" min="1" required />
-
-      <button type="submit">Submit Order</button>
+      <button type="submit">Submit Request</button>
     </form>
 
     <script>
       document
-        .getElementById("orderForm")
+        .getElementById("requestForm")
         .addEventListener("submit", function (event) {
-          const item = document.getElementById("item").value.trim();
-          const quantity = document.getElementById("quantity").value;
+          const request = document.getElementById("request").value.trim();
 
-          if (item === "") {
-            alert("Item name cannot be blank.");
+          if (request === "") {
+            alert("Request details cannot be blank.");
             event.preventDefault();
           }
         });
