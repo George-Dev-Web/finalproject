@@ -29,14 +29,25 @@
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        max-width: 300px;
+        max-width: 350px;
         margin: auto;
       }
-      label,
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
       input {
         display: block;
         margin-bottom: 10px;
         width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 10px;
       }
       button {
         background: #28a745;
@@ -45,6 +56,24 @@
         padding: 10px;
         cursor: pointer;
         width: 100%;
+        font-size: 16px;
+        border-radius: 4px;
+      }
+      button:hover {
+        background: #218838;
+      }
+      #orderSummary {
+        display: none;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        max-width: 350px;
+        margin: 20px auto;
+        text-align: center;
+      }
+      #orderSummary h3 {
+        color: #28a745;
       }
     </style>
   </head>
@@ -58,28 +87,93 @@
       </ul>
     </nav>
 
-    <h2>Place Your Order</h2>
+    <h2 style="text-align: center">Place Your Order</h2>
     <form id="orderForm">
       <label for="item">Item Name:</label>
-      <input type="text" id="item" name="item" required />
+      <input
+        type="text"
+        id="item"
+        name="item"
+        placeholder="Enter item name"
+        required
+      />
+      <span class="error" id="itemError"></span>
 
       <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" min="1" required />
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        min="1"
+        placeholder="Enter quantity"
+        required
+      />
+      <span class="error" id="quantityError"></span>
 
       <button type="submit">Submit Order</button>
     </form>
+
+    <!-- Order Confirmation Message -->
+    <div id="orderSummary">
+      <h3>Order Received!</h3>
+      <p><strong>Item:</strong> <span id="summaryItem"></span></p>
+      <p><strong>Quantity:</strong> <span id="summaryQuantity"></span></p>
+    </div>
 
     <script>
       document
         .getElementById("orderForm")
         .addEventListener("submit", function (event) {
+          let isValid = true;
           const item = document.getElementById("item").value.trim();
           const quantity = document.getElementById("quantity").value;
+          const itemError = document.getElementById("itemError");
+          const quantityError = document.getElementById("quantityError");
 
+          console.log("Form submitted. Validating inputs...");
+
+          // Reset error messages
+          itemError.textContent = "";
+          quantityError.textContent = "";
+
+          // Validate item name
           if (item === "") {
-            alert("Item name cannot be blank.");
-            event.preventDefault();
+            itemError.textContent = "Item name cannot be blank.";
+            console.log("Validation failed: Item name is blank.");
+            isValid = false;
           }
+
+          // Validate quantity
+          if (quantity === "" || quantity <= 0) {
+            quantityError.textContent = "Please enter a valid quantity.";
+            console.log("Validation failed: Invalid quantity entered.");
+            isValid = false;
+          }
+
+          // Prevent form submission if validation fails
+          if (!isValid) {
+            console.log("Form submission prevented due to validation errors.");
+            event.preventDefault();
+            return;
+          }
+
+          // Prevent page reload
+          event.preventDefault();
+
+          console.log("Validation successful. Processing order...");
+
+          // Display order summary
+          document.getElementById("summaryItem").textContent = item;
+          document.getElementById("summaryQuantity").textContent = quantity;
+          document.getElementById("orderSummary").style.display = "block";
+
+          console.log("Order Summary:");
+          console.log("Item:", item);
+          console.log("Quantity:", quantity);
+
+          // Clear the form
+          document.getElementById("orderForm").reset();
+          console.log("Form reset. Ready for a new order.");
         });
     </script>
   </body>
