@@ -47,6 +47,11 @@
         cursor: pointer;
         width: 100%;
       }
+      .success-message {
+        margin-top: 10px;
+        color: green;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
@@ -61,21 +66,62 @@
 
     <h2>Submit Your Request</h2>
     <form id="requestForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Your Phone Number:</label>
+      <input type="tel" id="phone" name="phone" />
+
       <label for="request">Request Details:</label>
       <textarea id="request" name="request" rows="4" required></textarea>
 
       <button type="submit">Submit Request</button>
+
+      <div id="successMessage" class="success-message" style="display: none">
+        Request received. We will fulfill it as soon as possible!
+      </div>
     </form>
 
     <script>
       document
         .getElementById("requestForm")
         .addEventListener("submit", function (event) {
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
           const request = document.getElementById("request").value.trim();
 
-          if (request === "") {
-            alert("Request details cannot be blank.");
+          console.log("Form submission initiated.");
+          console.log("Name:", name);
+          console.log("Email:", email);
+          console.log("Phone:", document.getElementById("phone").value);
+          console.log("Request Details:", request);
+
+          // Validation checks
+          if (name === "" || email === "" || request === "") {
+            console.log(
+              "Form submission failed: One or more required fields are empty."
+            );
+            alert("Please fill in all required fields.");
             event.preventDefault();
+          } else {
+            const emailPattern =
+              /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+              console.log("Form submission failed: Invalid email format.");
+              alert("Please enter a valid email address.");
+              event.preventDefault();
+            } else {
+              console.log("Form submission successful.");
+              // Show success message below the button
+              const successMessage = document.getElementById("successMessage");
+              successMessage.style.display = "block";
+              alert(
+                "Your request has been submitted successfully! Your request will be fulfilled as soon as possible."
+              );
+            }
           }
         });
     </script>
