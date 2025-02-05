@@ -75,27 +75,6 @@
         margin-bottom: 20px;
       }
 
-      .menu-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-
-      .menu-item {
-        background: white;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .menu-item img {
-        max-width: 100%;
-        border-radius: 8px;
-      }
-
       .menu-item h3 {
         margin: 10px 0;
         font-size: 1.2em;
@@ -128,6 +107,52 @@
 
       .menu-item:hover .recipe-link {
         opacity: 1;
+      }
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .menu-item {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        height: 400px;
+      }
+
+      .menu-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .menu-item {
+        display: flex;
+        flex-direction: column;
+        background-color: lightblue;
+      }
+
+      .menu-item img {
+        flex-grow: 1;
+      }
+
+      .menu-item h3,
+      .menu-item p,
+      .menu-item .price {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-top: auto;
+      }
+
+      .menu-item .recipe-link {
+        margin-bottom: 10px;
       }
 
       footer {
@@ -163,8 +188,8 @@
             />
             <h3>Alpha Pizza</h3>
             <p>
-              It has survived not only five centuries, but also the leap into
-              electronic typesetting
+              the most basic of pizzas to make, it will still tantalize your
+              taste buds.
             </p>
             <p class="price">$16.00</p>
             <a href="../recipes/alpha.html" class="recipe-link">See Recipe</a>
@@ -173,8 +198,8 @@
             <img src="../images/redpizza.jpg" alt="Alpha Red Pizza" />
             <h3>Alpha Red Pizza</h3>
             <p>
-              It has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining es
+              Just like the plain pizza, it is also quite easy to make with just
+              some more additional steps
             </p>
             <p class="price">$24.00</p>
             <a href="../recipes/redpiz.html" class="recipe-link">See Recipe</a>
@@ -186,8 +211,11 @@
             />
             <h3>American Big Burger</h3>
             <p>
-              Quisque malesuada placerat nisl. Vestibulum ante ipsum primis in
-              faucibus orci luctus et ultrices po
+              The beef burger, a classic American staple, is a ground beef patty
+              served in a bun, often with cheese, toppings, and condiments. 1 A
+              symbol of fast food and backyard barbecues, it's a globally
+              recognized and endlessly customizable dish, ranging from simple to
+              gourmet.
             </p>
             <p class="price">$6.50</p>
             <a href="../recipes/ameribur.html" class="recipe-link"
@@ -201,8 +229,11 @@
             />
             <h3>Bacon Roll</h3>
             <p>
-              Sed lectus. Phasellus accumsan cursus velit. Phasellus magna.
-              Nullam dictum felis eu pede mollis pret
+              The bacon roll, a simple yet satisfying combination of bacon and a
+              roll, is a popular and adaptable sandwich. Variations include
+              cheese, egg, and gourmet versions. It's a common comfort food,
+              especially in the UK and Ireland, where it's often a cultural
+              icon.
             </p>
             <p class="price">$3.50</p>
             <a href="../recipes/roll.html" class="recipe-link">See Recipe</a>
@@ -221,8 +252,12 @@
             <img src="../images/chickenburger.jpeg" alt="Chicken Burger" />
             <h3>Chicken Burger</h3>
             <p>
-              A chicken sandwich is a sandwich that typically consists of
-              boneless, skinless chicken breast served
+              The chicken burger, a lighter alternative to its beef counterpart,
+              offers a versatile and customizable meal. From simple grilled
+              chicken on a bun to elaborate creations with various toppings and
+              sauces, it caters to diverse tastes. It's a popular fast-food
+              option and a common homemade dish, offering a healthier protein
+              choice.
             </p>
             <p class="price">$6.00</p>
             <a href="../recipes/chickburg.html" class="recipe-link"
