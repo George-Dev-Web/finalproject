@@ -13,15 +13,57 @@
         text-align: center;
         color: white;
       }
+      footer {
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        background-color: none;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+        position: relative;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+      }
+
+      nav ul li a:hover {
+        background-color: white;
+        color: black;
+      }
+      img {
+        max-width: 50%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
     </style>
   </head>
 
   <h1>Alpha Pizza</h1>
   <body>
     <nav>
-      <a href="../index.html">Home</a>
-      <a href="../pages/menu.html">Menu</a>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../pages/menu.html">Menu</a></li>
+      </ul>
     </nav>
+    <img
+      src="../images/Alfa+Forni+Neapolitan-style+Pizza+7.jpg"
+      alt="Alpha pizza image"
+    />
     <h2>Yield: Serves 2</h2>
     <br />
     <h3>Ingredients</h3>
@@ -75,5 +117,8 @@
     </ol>
     <br />
     <p>Serve hot. Makes 1 pizza.</p>
+    <footer>
+      <p>&copy; 2025 G's Bites. All rights reserved</p>
+    </footer>
   </body>
 </html>
